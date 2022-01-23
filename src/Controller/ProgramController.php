@@ -31,7 +31,7 @@ class ProgramController extends AbstractController
     /**
      * Getting a program by id
      *
-     * @Route("/{id<^[0-9]+$>}", methods={"GET"}, name="show")
+     * @Route("{id<^[0-9]+$>}", methods={"GET"}, name="show")
      * @return Response A response instance
      */
     public function show(int $id): Response
@@ -53,7 +53,7 @@ class ProgramController extends AbstractController
 
     /**
      *
-     * @Route("{programId<^[0-9]+$>}/seasons/{seasonId<^[0-9]+$>}", methods={"GET"}, name="season_show")
+     * @Route("/{programId<^[0-9]+$>}/seasons/{seasonId<^[0-9]+$>}", methods={"GET"}, name="season_show")
      * @return Response A response instance
      */
     public function showSeason(int $programId, int $seasonId)
