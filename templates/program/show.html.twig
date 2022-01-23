@@ -12,6 +12,14 @@
         </div>
     </div>
 
+    <div class="media">
+        {% for season in program.seasons %}
+            <a href="{{ path("program_season_show", {programId: program.id, seasonId: season.id}) }}"><h2>Saison {{ season.number }} - {{ season.year }}</h2>
+            </a>
+        {% endfor %}
+    </div>
+
+
     <a href="{{ path('program_index') }}">
         Retour à la liste des programmes
     </a>

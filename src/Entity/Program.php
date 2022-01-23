@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProgramRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
@@ -25,6 +27,9 @@ class Program
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: "programs")]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\OneToMany(mappedBy: 'program', targetEntity: Season::class, orphanRemoval: true)]
+    private $seasons;
 
     public function getId(): ?int
     {
@@ -77,5 +82,21 @@ class Program
         $this->category = $category;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeasons()
+    {
+        return $this->seasons;
+    }
+
+    /**
+     * @param mixed $seasons
+     */
+    public function setSeasons($seasons): void
+    {
+        $this->seasons = $seasons;
     }
 }
