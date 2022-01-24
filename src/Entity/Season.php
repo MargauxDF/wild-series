@@ -41,7 +41,7 @@ class Season
         return $this->id;
     }
 
-    public function getProgram(): ?int
+    public function getProgram(): ?Program
     {
         return $this->program;
     }
